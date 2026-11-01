@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MicroAprende U | Gestión documental</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#18302c;background:#e9efeb;font-synthesis:none}*{box-sizing:border-box}body{margin:0;padding:16px}.phone{max-width:520px;margin:0 auto;background:#f9fbf9;border-radius:19px;overflow:hidden;box-shadow:0 8px 35px #14382e26}.head{background:#075e54;color:white;padding:16px 19px;display:flex;gap:12px;align-items:center}.logo{background:#d6f5e8;color:#075e54;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:700}.head strong{font-size:1.15rem}.head small{display:block;opacity:.85;font-size:.78rem;margin-top:3px}.content{padding:18px;min-height:380px}.bubble{background:white;border:1px solid #e1e7e3;border-radius:14px;padding:16px;margin-bottom:14px;line-height:1.5}.eyebrow{color:#4e7065;text-transform:uppercase;font-weight:700;letter-spacing:.07em;font-size:.76rem;margin:0 0 9px}h1{font-size:1.28rem;margin:0 0 12px;color:#105649}h2{font-size:1.1rem;color:#105649;margin:0 0 10px}p{margin:8px 0 12px}button{background:#087c63;color:white;border:0;border-radius:10px;padding:13px 16px;font-size:1rem;font-weight:650;cursor:pointer;width:100%}button:hover{background:#07634f}button:disabled{opacity:.45;cursor:not-allowed}.muted{color:#577066;font-size:.9rem}.video{position:relative;padding-top:56.25%;background:#142d27;border-radius:10px;overflow:hidden}.video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}.check{display:flex;gap:10px;align-items:flex-start;margin:16px 0;cursor:pointer}.check input{width:19px;height:19px;flex:0 0 19px;margin-top:3px;accent-color:#087c63}.item{border:1px solid #dfe8e2;border-radius:12px;background:#fff;padding:14px;margin-bottom:14px}.item h3{font-size:1rem;line-height:1.45;margin:0 0 10px}.option{display:flex;gap:9px;padding:10px 8px;border-radius:8px;line-height:1.4;cursor:pointer}.option:hover{background:#eff7f0}.option input{accent-color:#087c63;flex-shrink:0;margin-top:4px}.results{text-align:center}.score{font-size:3.1rem;font-weight:800;color:#075e54;letter-spacing:-.05em}.correct{color:#176649;font-weight:650}.wrong{color:#a14830;font-weight:650}.feedback{text-align:left;border-top:1px solid #d9e5dc;padding-top:12px;margin-top:12px}.feedback p{font-size:.92rem}.footer{font-size:.78rem;color:#5a7169;text-align:center;padding:10px 18px 20px}.secondary{background:#fff;border:1px solid #087c63;color:#087c63;margin-top:10px}.secondary:hover{background:#e6f3eb}a{color:#075e54}.field{display:block;font-weight:650;margin:12px 0 5px}.entry{width:100%;padding:12px;border:1px solid #a9bfb5;border-radius:9px;font:inherit}.entry:focus{outline:2px solid #087c63;outline-offset:1px}.hidden{display:none!important}
+</style>
+</head>
+<body>
+<main class="phone">
+<header class="head"><div class="logo">U</div><div><strong>MicroAprende U</strong><small>Capacitaciones en pequeñas dosis · Prototipo académico</small></div></header>
+<div class="content">
+<section id="welcome"><div class="bubble"><p class="eyebrow">Microcapacitación</p><h1>Gestión documental</h1><p>¡Hola! Conoce conceptos básicos de gestión documental mediante un video educativo y luego responde tres preguntas.</p><p class="muted">🎬 Video de YouTube · 📝 3 preguntas · 🏅 Calificación sobre 100</p><p class="muted">Este prototipo complementa, no reemplaza, las capacitaciones de los profesionales de la universidad.</p><div class="bubble"><h2>Identificación del participante</h2><p class="muted">Diligencia estos datos para que aparezcan en tu reporte CSV. Se usarán únicamente en este navegador; no se envían a GitHub ni a la universidad.</p><label class="field" for="participant">Nombre completo *</label><input class="entry" id="participant" type="text" maxlength="100" autocomplete="name" placeholder="Nombre y apellido" required><label class="field" for="department">Dependencia o área *</label><input class="entry" id="department" type="text" maxlength="100" placeholder="Ej. Gestión administrativa" required><label class="field" for="participantCode">Código de participante (opcional)</label><input class="entry" id="participantCode" type="text" maxlength="30" placeholder="Ej. PILOTO-01"><p class="muted">No ingreses tu cédula ni información sensible. Puedes usar un código ficticio para pruebas.</p></div><button type="button" id="start">Comenzar microcapacitación</button></section>
+<section id="watch" class="hidden"><div class="bubble"><p class="eyebrow">Paso 1 de 2</p><h2>Observa el video</h2><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/urhSDBpzw6Y?rel=0" title="Video sobre gestión documental" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div><p class="muted">Video de un tercero alojado en YouTube. Si el creador restringe la reproducción integrada, utiliza el enlace directo:</p><p><a href="https://www.youtube.com/watch?v=urhSDBpzw6Y" target="_blank" rel="noopener noreferrer">Abrir el video en YouTube ↗</a></p><label class="check"><input id="watched" type="checkbox"><span>Confirmo que vi el video y quiero realizar la evaluación.</span></label><p class="muted">Nota: esta confirmación es declarativa; el prototipo no comprueba automáticamente que hayas visto el video completo.</p></div><button id="toQuiz" type="button" disabled>Continuar a la evaluación</button></section>
+<section id="quiz" class="hidden"><div class="bubble"><p class="eyebrow">Paso 2 de 2</p><h2>Evaluación de conocimientos</h2><p class="muted">Elige una sola opción por pregunta. Cada respuesta correcta vale un tercio de la calificación.</p></div><form id="formQuiz" novalidate>
+<div class="item"><h3>1. ¿Qué implica el proceso de gestión documental?</h3><label class="option"><input type="radio" name="q1" value="a">Diseñar campañas, realizar encuestas y organizar reuniones.</label><label class="option"><input type="radio" name="q1" value="b">Captura, almacenamiento y recuperación de documentos.</label><label class="option"><input type="radio" name="q1" value="c">Comprar equipos, actualizar programas y gestionar inventarios.</label></div>
+<div class="item"><h3>2. ¿Qué exige la elaboración de documentos?</h3><label class="option"><input type="radio" name="q2" value="a">Regulación, control y planeación.</label><label class="option"><input type="radio" name="q2" value="b">Improvisación, publicación inmediata y eliminación de revisiones.</label><label class="option"><input type="radio" name="q2" value="c">Únicamente un computador y una conexión a internet.</label></div>
+<div class="item"><h3>3. ¿Qué significa optimizar los archivos?</h3><label class="option"><input type="radio" name="q3" value="a">Guardar todos los archivos sin revisarlos para evitar perder documentos.</label><label class="option"><input type="radio" name="q3" value="b">Cambiar los nombres de los archivos sin clasificarlos ni revisar su vigencia.</label><label class="option"><input type="radio" name="q3" value="c">Revisar la información, clasificar los archivos, identificar los que han perdido vigencia, almacenar de forma ordenada y definir su custodia.</label></div>
+<button type="submit" id="grade" disabled>Calificar evaluación</button></form></section>
+<section id="result" class="hidden"><div class="bubble results"><p class="eyebrow">Resultado de la microcapacitación</p><div class="score" id="score">0</div><p id="identitySummary" class="muted"></p><p id="summary"></p><div id="details" class="feedback"></div></div><button id="again" type="button">Volver a realizar la microcapacitación</button><button id="download" type="button" class="secondary">Descargar resultado (CSV)</button><p class="muted">Los resultados se procesan en tu navegador y no se envían a una base de datos. Este documento no constituye certificado institucional.</p></section>
+</div><div class="footer">MicroAprende U · Modelo de baja fidelidad para validación académica</div>
+</main>
+<script>
+(function(){
+'use strict';
+const ids=['welcome','watch','quiz','result'];
+function show(id){ids.forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));window.scrollTo({top:0,behavior:'instant'});}
+const correct={q1:'b',q2:'a',q3:'c'};
+const tips={q1:'Captura, almacenamiento y recuperación de documentos.',q2:'Regulación, control y planeación.',q3:'Revisar y clasificar archivos, identificar aquellos sin vigencia, organizar el almacenamiento y definir la custodia. La eliminación efectiva debe sujetarse a las tablas de retención y a las autorizaciones aplicables.'};
+let last=null;
+let participantData=null;
+document.getElementById('start').addEventListener('click',()=>{
+  const name=document.getElementById('participant');
+  const area=document.getElementById('department');
+  if(!name.value.trim()){name.setCustomValidity('Escribe el nombre del participante.');name.reportValidity();name.setCustomValidity('');return;}
+  if(!area.value.trim()){area.setCustomValidity('Escribe la dependencia.');area.reportValidity();area.setCustomValidity('');return;}
+  participantData={nombre:name.value.trim(),dependencia:area.value.trim(),codigo:document.getElementById('participantCode').value.trim()};
+  show('watch');
+});
+document.getElementById('watched').addEventListener('change',e=>document.getElementById('toQuiz').disabled=!e.target.checked);
+document.getElementById('toQuiz').addEventListener('click',()=>show('quiz'));
+const form=document.getElementById('formQuiz');
+function allAnswered(){return Object.keys(correct).every(k=>Boolean(form.querySelector('input[name="'+k+'"]:checked')));}
+form.addEventListener('change',()=>document.getElementById('grade').disabled=!allAnswered());
+form.addEventListener('submit',e=>{e.preventDefault();if(!allAnswered())return;let count=0;const answer={};let html='';Object.keys(correct).forEach((k,i)=>{const value=form.querySelector('input[name="'+k+'"]:checked').value;const ok=value===correct[k];if(ok)count++;answer[k]=value;html+='<p><strong>Pregunta '+(i+1)+':</strong> <span class="'+(ok?'correct':'wrong')+'">'+(ok?'Correcta':'Por reforzar')+'</span><br>'+tips[k]+'</p>';});const score=Math.round(count/3*100);document.getElementById('score').textContent=score+' / 100';document.getElementById('summary').textContent='Respuestas correctas: '+count+' de 3. '+(count===3?'¡Excelente trabajo!':'Puedes repasar el video y volver a intentarlo.');document.getElementById('details').innerHTML=html;last={fecha:new Date().toLocaleString('es-CO'),...participantData,correctas:count,calificacion:score,...answer};document.getElementById('identitySummary').textContent='Participante: '+last.nombre+' · Dependencia: '+last.dependencia+(last.codigo?' · Código: '+last.codigo:'');show('result');});
+document.getElementById('again').addEventListener('click',()=>{form.reset();document.getElementById('watched').checked=false;document.getElementById('toQuiz').disabled=true;document.getElementById('grade').disabled=true;last=null;show('welcome');});
+document.getElementById('download').addEventListener('click',()=>{
+  if(!last)return;
+  // Un registro por pregunta, con enunciados y respuestas completas.
+  const questions=[...form.querySelectorAll('.item')];
+  const headers=['Fecha','Nombre del participante','Dependencia','Código de participante','Pregunta','Respuesta seleccionada','Respuesta correcta','Resultado','Total correctas','Calificación sobre 100'];
+  const rows=questions.map((item,index)=>{
+    const key='q'+(index+1);
+    const question=item.querySelector('h3').textContent.trim().replace(/^\d+\.\s*/, '');
+    const options=[...item.querySelectorAll('input[type="radio"]')];
+    function answerText(value){const input=options.find(x=>x.value===value);return input?input.closest('label').textContent.trim():'';}
+    return [last.fecha,last.nombre,last.dependencia,last.codigo,question,answerText(last[key]),answerText(correct[key]),last[key]===correct[key]?'Correcta':'Incorrecta',last.correctas,last.calificacion];
+  });
+  // Compatible con Excel en español: separador ;, comillas escapadas y UTF-8 BOM.
+  const cell=value=>'"'+String(value??'').replace(/"/g,'""')+'"';
+  const csv='\uFEFF'+[headers,...rows].map(row=>row.map(cell).join(';')).join('\r\n')+'\r\n';
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='MicroAprende_U_resultado_'+(last.codigo||'participante').replace(/[^a-zA-Z0-9_-]/g,'_')+'.csv';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+})();
+</script>
+</body></html>
