@@ -37,7 +37,25 @@ function allAnswered(){return Object.keys(correct).every(k=>Boolean(form.querySe
 form.addEventListener('change',()=>document.getElementById('grade').disabled=!allAnswered());
 form.addEventListener('submit',e=>{e.preventDefault();if(!allAnswered())return;let count=0;const answer={};let html='';Object.keys(correct).forEach((k,i)=>{const value=form.querySelector('input[name="'+k+'"]:checked').value;const ok=value===correct[k];if(ok)count++;answer[k]=value;html+='<p><strong>Pregunta '+(i+1)+':</strong> <span class="'+(ok?'correct':'wrong')+'">'+(ok?'Correcta':'Por reforzar')+'</span><br>'+tips[k]+'</p>';});const score=Math.round(count/3*100);document.getElementById('score').textContent=score+' / 100';document.getElementById('summary').textContent='Respuestas correctas: '+count+' de 3. '+(count===3?'¡Excelente trabajo!':'Puedes repasar el video y volver a intentarlo.');document.getElementById('details').innerHTML=html;last={fecha:new Date().toLocaleString('es-CO'),correctas:count,calificacion:score,...answer};show('result');});
 document.getElementById('again').addEventListener('click',()=>{form.reset();document.getElementById('watched').checked=false;document.getElementById('toQuiz').disabled=true;document.getElementById('grade').disabled=true;last=null;show('welcome');});
-document.getElementById('download').addEventListener('click',()=>{if(!last)return;const cols=['fecha','q1','q2','q3','correctas','calificacion'];const csv='\uFEFF'+cols.join(';')+'\r\n'+cols.map(k=>String(last[k]).replaceAll(';',',')).join(';')+'\r\n';const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='MicroAprende_U_resultado.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+document.getElementById('download').addEventListener('click',()=>{
+  if(!last)return;
+  // Un registro por pregunta, con enunciados y respuestas completas.
+  const questions=[...form.querySelectorAll('.item')];
+  const headers=['Fecha','Pregunta','Respuesta seleccionada','Respuesta correcta','Resultado','Total correctas','Calificación sobre 100'];
+  const rows=questions.map((item,index)=>{
+    const key='q'+(index+1);
+    const question=item.querySelector('h3').textContent.trim().replace(/^\d+\.\s*/, '');
+    const options=[...item.querySelectorAll('input[type="radio"]')];
+    function answerText(value){const input=options.find(x=>x.value===value);return input?input.closest('label').textContent.trim():'';}
+    return [last.fecha,question,answerText(last[key]),answerText(correct[key]),last[key]===correct[key]?'Correcta':'Incorrecta',last.correctas,last.calificacion];
+  });
+  // Compatible con Excel en español: separador ;, comillas escapadas y UTF-8 BOM.
+  const cell=value=>'"'+String(value??'').replace(/"/g,'""')+'"';
+  const csv='\uFEFF'+[headers,...rows].map(row=>row.map(cell).join(';')).join('\r\n')+'\r\n';
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='MicroAprende_U_resultado_detallado.csv';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
 })();
 </script>
 </body></html>
